@@ -4,7 +4,8 @@ import './index.css';
 // import App from './App';
 // import Life from './pages/demo/Life'
 import Admin from './admin'
-import Router from './pages/route_demo/route2/router'
+// import Router from './pages/route_demo/route3/router'
+import Router from './router'
 import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(<Router />, document.getElementById('root'));

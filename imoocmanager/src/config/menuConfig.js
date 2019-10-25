@@ -17,7 +17,7 @@ const menuList = [
             },
             {
                 title: 'Loading',
-                key: '/admin/admin/ui/loadings',
+                key: '/admin/ui/loadings',
             },
             {
                 title: '通知提醒',
