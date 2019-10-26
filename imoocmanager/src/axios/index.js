@@ -1,43 +1,53 @@
 import JsonP from 'jsonp'
 import axios from 'axios'
-import { Modal } from 'antd'
+import {
+  Modal
+} from 'antd'
 export default class Axios {
-  static jsonp(options){
-    return  new Promise((resolve,reject)=>{
-      JsonP(options.url,{
-        param:'callback'
-      },function(err,response){
-        if(response.status === 'success'){
+  static jsonp(options) {
+    return new Promise((resolve, reject) => {
+      JsonP(options.url, {
+        param: 'callback'
+      }, function (err, response) {
+        if (response.status === 'success') {
           resolve(response)
-        }else{
+        } else {
           reject(response.message)
         }
       })
     })
   }
-  static ajax(options){
+  static ajax(options) {
+    let loading;
+    if (options.data && options.data.isShowLoading !== false) {
+      loading = document.getElementById('ajaxLoading');
+      loading.style.display = 'block';
+    }
     let baseApi = 'https://www.easy-mock.com/mock/5a7278e28d0c633b9c4adbd7/api';
-    // Promise里面会接收一个回调函数
-    return new Promise((resolve,reject)=>{
+    return new Promise((resolve, reject) => {
       axios({
-        url:options.url,
-        method:'get',
-        baseURL:baseApi,
-        timeout:5000,
-        param:(options.data && options.data.params) || ''
-      }).then((response)=>{
-        if(response.status == '200'){
+        url: options.url,
+        method: 'get',
+        baseURL: baseApi,
+        timeout: 5000,
+        params: (options.data && options.data.params) || ''
+      }).then((response) => {
+        if (options.data && options.data.isShowLoading !== false) {
+          loading = document.getElementById('ajaxLoading');
+          loading.style.display = 'none';
+        }
+        if (response.status == '200') {
           let res = response.data;
-          if(res.code == '0'){
+          if (res.code == '0') {
             resolve(res);
-          }else{
+          } else {
             Modal.info({
-              title:'提示',
-              content:res.msg
+              title: "提示",
+              content: res.msg
             })
           }
-        }else{
-          reject(response.data)
+        } else {
+          reject(response.data);
         }
       })
     });

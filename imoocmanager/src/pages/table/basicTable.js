@@ -45,9 +45,25 @@ export default class BasicTable extends React.Component{
       this.setState({
           dataSource: data
       })
-      // this.request();
+      this.request();
   }
-  
+  request = ()=>{
+    let _this = this;
+    axios.ajax({
+      url:'/table/list',
+      data:{
+        params:{
+          page:1
+        }
+      }
+    }).then((res)=>{
+      if(res.code==0){
+        this.setState({
+          dataSource2:res.result.list
+        })
+      }
+    })
+  }
   render(){
     const columns = [
       {
