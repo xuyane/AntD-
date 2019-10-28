@@ -1,0 +1,8 @@
+{
+  "host": "localhost",
+  "port": 4200,
+  "watch": true,
+  "read-only": false,
+  "no-cors": false,
+  "no-gzip": false
+}
