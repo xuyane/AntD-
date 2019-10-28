@@ -6,6 +6,9 @@ export default class BasicTable extends React.Component{
   state={
     dataSource2:[]
   }
+  params = {
+        page:1
+    }
   componentDidMount(){
     const data = [
         {
@@ -53,7 +56,7 @@ export default class BasicTable extends React.Component{
       url:'/table/list',
       data:{
         params:{
-          page:1
+          page:this.params.page
         }
       }
     }).then((res)=>{
