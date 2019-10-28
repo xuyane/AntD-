@@ -24,7 +24,9 @@ export default class Axios {
       loading.style.display = 'block';
     }
     let baseApi = 'https://www.easy-mock.com/mock/5a7278e28d0c633b9c4adbd7/api';
+    // let baseApi = 'http://:192.168.212.100:4200';
     return new Promise((resolve, reject) => {
+      console.log(options,baseApi);
       axios({
         url: options.url,
         method: 'get',
@@ -32,6 +34,7 @@ export default class Axios {
         timeout: 5000,
         params: (options.data && options.data.params) || ''
       }).then((response) => {
+        console.log('11',response);
         if (options.data && options.data.isShowLoading !== false) {
           loading = document.getElementById('ajaxLoading');
           loading.style.display = 'none';
