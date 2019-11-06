@@ -1,5 +1,5 @@
 {
-  "host": "localhost",
+  "host": "192.168.212.100",
   "port": 4200,
   "watch": true,
   "read-only": false,

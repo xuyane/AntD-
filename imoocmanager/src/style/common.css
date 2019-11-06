@@ -37,6 +37,16 @@
   opacity: 0.1;
 }
 /****/
+ul,
+li {
+  list-style: none;
+}
+.clearfix::after {
+  content: ' ';
+  clear: both;
+  display: block;
+  visibility: hidden;
+}
 .container .nav-left {
   background-color: #001529;
   color: #ffffff;
@@ -59,4 +69,7 @@
 .content-wrap .ant-table-wrapper {
   margin-left: -1px;
   margin-right: -2px;
+}
+.ant-card button {
+  margin-right: 10px;
 }
